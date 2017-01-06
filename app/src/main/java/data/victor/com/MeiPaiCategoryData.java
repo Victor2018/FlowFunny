@@ -1,0 +1,1 @@
+package data.victor.com;import java.util.List;/** * Created by victor on 2016/8/11. */public class MeiPaiCategoryData {    public List<MeiPaiCategoryContentData> meiPaiCategoryContentDatas;    public int status;    public String resCode;    public String resError;}

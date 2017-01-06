@@ -1,0 +1,5 @@
+1,NDK下载地址：http://developer.android.com/intl/zh-cn/ndk/downloads/index.html（需要翻墙，VPN:）
+
+2，开源项目：
+    2.1，https://github.com/Trinea/android-open-project
+    2.2，https://github.com/wasabeef/awesome-android-ui/

@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/rl_play_ctrl"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/transparent">
+
+    <FrameLayout
+        android:id="@+id/l_title"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:background="@color/dark_grey">
+
+        <ImageButton
+            android:id="@+id/ib_back"
+            android:layout_width="50dp"
+            android:layout_height="fill_parent"
+            android:background="#00000000"
+            android:padding="10dp"
+            android:contentDescription="返回"
+            android:gravity="center"
+            android:scaleType="centerInside"
+            android:src="@mipmap/icon_back" />
+
+        <view.victor.com.MovingTextView
+            android:id="@+id/mtv_title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:singleLine="true"
+            android:ellipsize="marquee"
+            android:marqueeRepeatLimit="marquee_forever"/>
+        <ImageButton
+            android:id="@+id/ib_lock"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:padding="5dp"
+            android:background="#00000000"
+            android:layout_gravity="right"
+            android:gravity="center"
+            android:scaleType="centerInside"
+            android:src="@mipmap/icon_unlock" />
+
+    </FrameLayout>
+
+    <ImageView
+        android:id="@+id/iv_play_center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:contentDescription="@null"
+        android:scaleType="fitXY"
+        android:src="@mipmap/icon_play"
+        android:visibility="gone" />
+    <FrameLayout
+        android:id="@+id/fl_tip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="55dp"
+        android:layout_marginRight="10dp"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/bg_blue_round">
+        <view.victor.com.TipView
+            android:id="@+id/tv_tip"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="45dp"
+            android:background="@color/colorBluePrimary"/>
+        <ImageView
+            android:id="@+id/iv_run_fold"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center|right"
+            android:background="@mipmap/loading_run_fold"/>
+        <ImageView
+            android:id="@+id/iv_run_loading"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center|right"
+            android:background="@anim/animi_run_loading"/>
+    </FrameLayout>
+    <FrameLayout
+        android:id="@+id/l_oper_vol_bright"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@color/transparent"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        android:gravity="center">
+        <ImageView
+            android:id="@+id/iv_oper_bg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:src="@mipmap/video_volumn_bg" />
+        <ProgressBar
+            android:id="@+id/pb_vol_bright"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="8dp"
+            android:max="100"
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:layout_gravity="bottom"/>
+    </FrameLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_ctrl"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/dark_grey"
+        android:gravity="center_vertical">
+        <ImageView
+            android:id="@+id/iv_live_loading"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@anim/animi_live_loading"/>
+        <ImageButton
+            android:id="@+id/ib_play"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="3dp"
+            android:background="#00000000"
+            android:gravity="center"
+            android:padding="10dp"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/icon_pause" />
+
+        <ImageButton
+            android:id="@+id/ib_scale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="3dp"
+            android:background="#00000000"
+            android:padding="10dp"
+            android:scaleType="fitCenter"
+            android:visibility="visible"
+            android:src="@mipmap/icon_scale" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center_vertical"
+            android:layout_toLeftOf="@id/ib_scale"
+            android:layout_toRightOf="@id/ib_play"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_pass_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:text="00:00"
+                android:textColor="@color/light_grey" />
+
+            <SeekBar
+                android:id="@+id/sb_progress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:indeterminateDrawable="@drawable/seekbar_selector"
+                android:maxHeight="2dp"
+                android:minHeight="2dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:progressDrawable="@drawable/seekbar_selector"
+                android:thumb="@mipmap/seek_dot"
+                android:thumbOffset="10dip" />
+
+            <TextView
+                android:id="@+id/tv_long_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="10dp"
+                android:text="00:00"
+                android:textColor="@color/light_grey" />
+        </LinearLayout>
+    </RelativeLayout>
+
+
+</RelativeLayout>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="flowfunny.victor.com.WatchFaceActivity"
+    tools:showIn="@layout/activity_watch_face">
+
+    <view.victor.com.WatchFaceView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:wf_hour_pointer_color="#AFB42B"
+        app:wf_minute_pointer_color="#CDDC39"
+        app:wf_second_pointer_color="#FFEB3B"
+        app:wf_scale_long_color="#455A64"
+        app:wf_scale_short_color="#607D8B"/>
+
+</RelativeLayout>

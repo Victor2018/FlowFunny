@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="flowfunny.victor.com">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/logo"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <meta-data
+            android:name="UPDATE_URL_KEY"
+            android:value="https://raw.githubusercontent.com/Victor2018/FlowFunny/master/docs/update_json.txt"/>
+        <activity
+            android:name=".MainActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".VideoPlayActivity"
+            android:label="@string/title_activity_video_play"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".HorizontalListViewActivity"
+            android:label="@string/title_activity_diy_view"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".SortListViewActivity"
+            android:label="@string/title_activity_sort_list_view"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".WaveViewActivity"
+            android:label="@string/title_activity_wave_view"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".RippleViewActivity"
+            android:label="@string/title_activity_ripple_view"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".PinnedHeaderExpandableListViewActivity"
+            android:label="@string/title_activity_pinned_header_expandable_list_view"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".VerticalSeekBarActivity"
+            android:label="@string/title_activity_vertical_seek_bar"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".KeywordsFlowActivity"
+            android:label="@string/title_activity_keywords_flow"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".DraggableGridViewPagerActivity"
+            android:label="@string/title_activity_draggable_grid_view_pager"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".GifViewActivity"
+            android:label="@string/title_activity_gif_view"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".RemoteInstallActivity"
+            android:label="@string/title_activity_remote_install"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".SquareProgressBarActivity"
+            android:label="@string/title_activity_square_progress_bar"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ChartActivity"
+            android:label="@string/title_activity_chart"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".LineChartActivity"
+            android:label="LineChartActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".BarChartActivity"
+            android:label="BarChartActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".HorizontalChart"
+            android:label="HorizontalChart"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".CombinedChartActivity"
+            android:label="CombinedChartActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".PieChartActivity"
+            android:label="PieChartActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ScatterChartActivity"
+            android:label="ScatterChartActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".CandleChart"
+            android:label="CandleChart"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".RadarChartActivity"
+            android:label="RadarChartActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <provider
+            android:name="db.victor.com.DataBaseContent"
+            android:authorities="content.victor.flowfunnycontent" />
+
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote">
+            <intent-filter>
+                <action android:name="com.baidu.location.service_v2.2" />
+            </intent-filter>
+        </service>
+
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="XjqApIKHCDZ7bDcLFuel2GjL" />
+
+        <activity
+            android:name=".DbActivity"
+            android:label="@string/title_activity_db"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".DesignModeActivity"
+            android:label="@string/title_activity_design_mode"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".AlgorithmActivity"
+            android:label="@string/title_activity_algorithm"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".BaseKnowledgeActivity"
+            android:label="@string/title_activity_base_knowledge"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".WatchFaceActivity"
+            android:label="@string/title_activity_watch_face"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <service
+            android:name="module.victor.com.MusicService"
+            android:enabled="true"
+            android:exported="false"
+            android:label="Player"
+            android:stopWithTask="false">
+            <intent-filter>
+                <action android:name="com.app.media.MUSIC_SERVICE" />
+                <!-- 关机广播 -->
+                <action android:name="android.intent.action.ACTION_SHUTDOWN" />
+                <action android:name="com.app.media.stopService" />
+            </intent-filter>
+        </service>
+
+    </application>
+
+</manifest>

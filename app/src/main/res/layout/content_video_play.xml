@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="flowfunny.victor.com.VideoPlayActivity"
+    tools:showIn="@layout/activity_video_play">
+
+    <SurfaceView
+        android:id="@+id/sv_video_play"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    <view.victor.com.CircularProgress
+        android:id="@+id/cp_progress"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_gravity="center"
+        app:circularProgressBorderWidth="4dp"/>
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="bottom"
+        android:gravity="center"
+        android:weightSum="1"
+        layout="@layout/player_ctrl"/>
+</FrameLayout>

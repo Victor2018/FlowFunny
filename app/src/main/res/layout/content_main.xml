@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:hyman="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="flowfunny.victor.com.MainActivity">
+    <view.victor.com.SlidingMenu
+        android:id="@+id/id_menu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@mipmap/bg_left_menu"
+        hyman:rightPadding="80dp" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal" >
+
+            <include layout="@layout/left_menu" />
+            <include
+                android:id="@+id/l_sliding_menu_content"
+                layout="@layout/content_pager_sliding_tab_strip"
+                android:clickable="true"/>
+        </LinearLayout>
+    </view.victor.com.SlidingMenu>
+</RelativeLayout>

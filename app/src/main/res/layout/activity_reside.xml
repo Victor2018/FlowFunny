@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<view.victor.com.ResideLayout
+    android:id="@+id/rl_slide"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="flowfunny.victor.com.MainActivity">
+
+        <include layout="@layout/left_menu" />
+        <include
+            android:id="@+id/l_sliding_menu_content"
+            layout="@layout/content_pager_sliding_tab_strip"/>
+
+</view.victor.com.ResideLayout>

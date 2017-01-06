@@ -1,0 +1,302 @@
+1，Activity启动模式:
+（1），standard
+（2），singleTop
+（3），singleTask
+（4），singleInstance
+
+2，Java通过Executors提供四种线程池，分别为：
+（1），newCachedThreadPool创建一个可缓存线程池，如果线程池长度超过处理需要，可灵活回收空闲线程，若无可回收，则新建线程。
+（2），newFixedThreadPool 创建一个定长线程池，可控制线程最大并发数，超出的线程会在队列中等待。
+（3），newScheduledThreadPool 创建一个定长线程池，支持定时及周期性任务执行。
+（4），newSingleThreadExecutor 创建一个单线程化的线程池，它只会用唯一的工作线程来执行任务，保证所有任务按照指定顺序(FIFO, LIFO, 优先级)执行。
+
+3，多线程的实现方式：
+（1），继承Thread类，
+（2），实现Runnable接口，
+（3），使用ExecutorService、Callable、Future实现有返回结果的多线程
+注：其中前两种方式线程执行完后都没有返回值，只有最后一种是带返回值的
+
+4，Java中wait()和sleep()方法的区别：
+（1），sleep（）是Thread类的方法，是线程用来 控制自身流程的比如有一个要报时的线程，每一秒中打印出一个时间，那么我就需要在print方法前面加上一个sleep让自己每隔一秒执行一次。就像个闹钟一样，wait（）是Object类的方法，用来线程间的通信，这个方法会使当前拥有该对象锁的进程等待知道其他线程调用notify（）方法时再醒来，不过你也可以给他指定一个时间，自动醒来。这个方法主要是用走不同线程之间的调度的。
+（2）最大的区别是：在等待是wait（）会释放锁而sleep（）一直持有锁，wait通常用于线程间交互，sleep通常被用于暂停执行
+
+5，java中的反射：
+   java中的反射首先是能够获取java中要反射类的字节码，获取字节码有三种方法（1，Class.forName(className);2,类名.class;3,this.getClass()）然后将字节码中的方法，变量，构造函数等映射成相应的Method、Filed、Constructor等类，这些类提供了丰富的方法可以被我们所使用。
+
+6，java中的设计模式：
+   java中的设计模式一般认为有23中，总体来说分为三大类：
+   （1），创建型模式 5种：工厂方法模式、抽象工厂模式、单例模式、建造者模式、原型模式；
+   （2），结构型模式 7种：适配器模式、装饰器模式、代理模式、外观模式、桥接模式、组合模式、享元模式；
+   （3），行为型模式 11种：策略模式、模板方法模式、观察者模式、迭代子模式、责任链模式、命令模式、备忘录模式、状态模式、访问者模式、中介者模式、解释器模式。
+
+7，Android Service两种启动方式：
+（1），Context.startService()方式启动；
+（2），Context.bindService()方式启动。（生命周期与提供 context者一致）
+
+8，Android中横竖屏切换会调用生命周期的哪些方法？
+   此时的生命周期跟清单文件里面的配置有关
+   （1），不设置activit的android:configChanges时，切屏会重新调用各个生命周期，默认首先销毁当前activity然后重新加载；
+      onPause()
+      onStop()
+      onDestroy()
+      onCreate()
+      onStart()
+      onResume()
+   （2），设置activity的android:configChanges="orientation|keyboardHidden|screenSize"，切屏不会重新调用各个生命周期，只会执行onConfigurationChanged方法。
+
+9，Fragment 和 Activity之间如何传值？
+   当Fragment 和 Activity绑定之后，在Fragment中可以通过getActivity()方法获取到其绑定的Ativity对象，这样就可以调用Activity的方法了，在Activity中可以通过FragmentManager fm = getFragmentManager();Fragment frag = fm.findFragmentByTag(tag),   Fragment frag = fm.findFragmentById(id)获取到Fragment之后就可以调用Fragment的方法，也就实现了通信功能。
+
+10，什么情况下回导致OOM异常?
+   （1），图片过大导致OOM;（1，等比例缩小图片；2，对图片采用软引用，及时地进行recyle()操作）
+   （2），界面切换到OOM; （1，看看也没布局中有没有大的图片，比如背景图，去除xml中的设置改在程序中设置背景图（放在onCreate（）方法中）；2，跟方法1相似，直接把xml配置文件加载成view再放大一个容器里，然后直接调用this.setContentView(View view),避免xml的重复加载；3，在页面切换时尽可能少的重复使用一些代码；）
+   （3），查询数据库没有关闭游标（用完游标及时关闭）；
+   （4），构造Adapter时，没有使用缓存的convertView（尽可能的使用converView）；
+   （5），Bitmap对象不再使用时，调用recyle（）释放内存；
+
+11，Android如何捕获未捕获的异常？
+   （1），自定义一个Application，比如叫MyApplicateion 继承Application 实现UncaughtExceptionHandler;
+   （2），覆写实现UncaughtExceptionHandler的onCreate()和实现UncaughtException（）方法
+   注意：在onCreate()中我们给Thread类设置默认异常处理handler，如果这句代码（Thread.setDefaultUncaughtExceptionHandler(this)）不执行则一切都是白搭；
+         在实现UncaughtException（）方法中我们必须新开辟一个线程进行我们的异常搜集工作，然后将系统给杀死；
+   （3），在AndroidMainiFest中配置该Application。
+ 
+12，Android屏幕适配方式有哪些？
+   （1），适配方式之dp；
+   （2），适配方式之dimens；
+   （3），适配方式之layout；
+   （4），适配方式之java代码适配；
+   （5），适配方式之weight权重适配。
+13，View绘制流程：
+   （1），mesarue()过程：
+    主要作用：为整个View树计算实际的大小，即设置实际的高(对应属性:mMeasuredHeight)和宽(对应属性:
+    mMeasureWidth)，每个View的控件的实际宽高都是由父视图和本身视图决定的。
+   （2），layout布局过程：
+    主要作用 ：为将整个根据子视图的大小以及布局参数将View树放到合适的位置上。
+   （3）， draw()绘图过程：
+    由ViewRoot对象的performTraversals()方法调用draw()方法发起绘制该View树，值得注意的是每次发起绘图时，并不
+    会重新绘制每个View树的视图，而只会重新绘制那些“需要重绘”的视图，View类内部变量包含了一个标志位DRAWN，当该
+    视图需要重绘时，就会为该View添加该标志位。
+
+14，Android中的动画有哪几类，它们的特点和区别是什么？
+   Android中的动画分为两种：Tween动画和Frame动画。
+   Tween动画：这种实现方式可以是视图组件移动、缩放及产生透明变化；
+   Frame动画：传统的动画方法，通过顺序的播放排列好的图片来实现，类似电影。
+
+15，如何修改activity进入和退出动画？
+   （1），自定义activity主题；
+   （2），覆写activity的overridePendingTransition方法
+          overridePendingTransition（R.anim.fade,R.anim.hold）;
+
+16,handler机制的原理:
+   andriod提供了Handler 和 Looper 来满足线程间的通信。Handler先进先出原则。Looper类用来管理特定线程内对象之间的消息交换(MessageExchange)。
+   1)Looper: 一个线程可以产生一个Looper对象，由它来管理此线程里的MessageQueue(消息队列)。 
+   2)Handler: 你可以构造Handler对象来与Looper沟通，以便push新消息到MessageQueue里;或者接收Looper从Message Queue取出)所送来的消息。
+   3)Message Queue(消息队列):用来存放线程放入的消息。 
+   4)线程：UIthread 通常就是main thread，而Android启动程序时会替它建立一个MessageQueue。
+
+17,List容器和Set容器的区别
+   List :  (1)有序的数据，取数据的时候是按放数据的顺序取的；（2）可重复的数据。
+   Set:    (1)无序的数据，取数据的顺序和放数据的顺序不一致； (2)不可重复的数据(通过equals和hashcode共同决定的)。
+
+18,switch 语句   数据类型byte int short char  enum只有这五种类型
+
+19,数据类型：
+	基本类型： byte    short     int      long  float   double   boolean  char
+	封包       Byte    Short   Integer   Long  Float   Double  Boolean  Character
+	默认值：    0        0      0        0    0.0     0.0      flase    '\u0000'
+	除了八种基本类型，一切皆对象（隐用类型  默认值是null）
+   Enum    枚举类型
+
+20,标识符定义
+           （1），由字母，数字，下划线（_），美元符（$）四种组成
+           （2），不能以数字开头
+           （3），长度不受限制          oracle 中长度受限制（最长30 个字节）
+           （4），不能和java中的关键字冲突
+
+21,面向对象 
+	权限           本类      同包子类      非同包子类   非同包非子类（没关系）
+        private         ok
+  默认（friendly）      ok          ok
+        protected       ok          ok             ok
+	public          ok          ok             ok            ok
+  封装   继承   多态
+
+22,封装   ----------------属性私有化，定义public访问方法
+
+23,继承
+	（1），java是单继承，继承具有传递性（访问权限）
+        （2），构造函数，子类一定要调用父类构造函数，默认调用父类默认的构造函数，如果父类默认构造，子类必须调用父类定义的带参数的构造函数
+
+24,多态
+	用父类声明的变量引用子类的对象
+	用接口声明的变量来引用实现该接口的类的对象
+
+   1，jdk1.5以后，用Object声明的变量可以引用java中任何数据类型，java中所有的数据都可以调用Object类的方法（数组也可以）
+
+   Object类的用法
+   Object 方法：equals   hashcode()   toString()  finalize()垃圾回收   clone  wait()  notify  notifyAll getClass 
+      
+   String类  常量
+	String  StringBuffer(线程安全) StringBuilder（线程非安全的） 
+
+25,方法覆盖
+       （1），访问权限不能比父类的弱
+       （2），返回类型 jdk1.4 返回类型必须完全一样，jdk1.5以后 返回类型可以是父类方法返回类型的子类类型
+       （3），方法名必须一样
+       （4），参数必须一样
+       （5），不能抛出父类方法没有抛出的异常（如果父类方法没有抛出异常，子类覆盖方法一定不能抛出一样，如果父类方法抛出一样，子类方法可以不抛出异常，如果抛出异常，必须父类方法抛出的异常能够识别的（父子关系））
+
+26,方法重载 ---------------方法名一样参数不一样，调用的时候，看传递的实际参数的类型，去找对应的最匹配的重载方法。
+   如果定义类没有写extends   ，那么 默认 extends Object, 所有的类类型都是Object类子类
+
+27,实例化顺序
+	1，先初始化父类静态属性或静态初始化块（只执行一次）
+        2，初始化子类静态属性或静态初始化块（只执行一次）
+        3，为父类子类属性分配空间并初始化默认（按类型初始化）
+        4，父类属性或者非静态块的初始化（按顺序）
+        5，父类构造函数的执行
+        6，子类属性或非静态块的初始化（按顺序）
+        7，子类构造函数的执行
+   属性和静态方法看变量的类型，如果是父类类型调用父类，如果是子类类型调用子类，非静态方法看对象，子类对象调用子类的，父类对象调用父类的。
+   属性先静态属性或者静态块按顺序执行（只执行一次），非静态属性或者非静态块按顺序初始化（执行多次）
+   对象调用方法，如果存在方法覆盖调用子类的 否则调用父类的
+
+28,接口和抽象类
+	接口的特点：
+	（1），接口不能实例化
+        （2），接口只能声明抽象方法或常量
+        （3），接口里所有的访问权限都是public
+        （4），接口可以多继承
+
+	抽象类的特点：
+        （1），抽象类可以有非抽象方法；
+	（2），抽象类不能实例化；
+	（3），抽象类里有四种访问权限；
+	（4），抽象类是单继承
+
+   当描述一组方法的时候使用接口
+   当描述一个虚拟的物体的时候使用抽象类
+
+29,static   
+         static成员都是属于类管理，所有的对象共享
+         static属性或初始化 只执行一次  
+           1，第一次调用该类静态成员
+           2，第一次实例化该类
+           3，执行该类（执行main方法之前）
+         单实例模式的实现
+  static关键字只能用于类成员，不能修饰独立的类
+
+30,abstract  
+         可以修饰类，也可以修饰类成员
+          
+	 修饰类表示该类是抽象类,但是该类可以没有抽象方法，并且也不能实例化
+         修饰方法，表示该方法是抽象的，那么如果一个类有一个抽象方法，那么该类必须声明成abstract类
+
+31,final
+        修饰类和类的成员
+        修饰类，表示该类不能被别的类继承
+                   常见的类：String  System Math 八种基本类型对应的包装类
+        修饰方法，表示该方法不能被覆盖。
+        修饰属性，表示该属性是常量
+   final 与 abstract 不能混用
+
+   static 与 abstract 也不能混用
+   访问权限private 与 abstract不能混用
+   当方法被private ,static ,final三个其中一个修饰的时候，该方法静态绑定
+
+32,内部类
+	1，成员内部类
+        2，静态内部类（顶层内部类）
+        3，方法中的内部类
+        4，匿名类（匿名抽象类或者接口，非抽象类）
+
+33,Iterable （独立接口没有父接口）
+     java中增强for循环用于那些类型的对象
+        1，数组
+        2，Iterable类型的实例
+
+34,Map （独立没有父接口）
+      Map类型的容器不能直接用增强for循环
+      Map容器的特点 ：保存的关键字和值对
+   取Map 类型的信息有几种 ：
+     取所有的关键字 keySet
+     取所有的值 values
+   取所有的关键字和值对 entrySet
+
+35,Collection与Collections区别
+  Collection 是Iterable的一个接口
+  collections 是一个类
+
+36,xml 语法
+   节点由元素节点、文本节点、属性节点组成
+     1， 只有一个根标记（节点）
+     2，节点由开始标记、结束标记  body部分组成
+     3，大小写区分
+
+37,Touch事件的处理流程：
+
+    1,一旦某个ViewGroup获得了ACTION_DOWN的事件，会根据深度优先的算法遍历以该ViewGroup为根节点的view树
+
+    2,如果点击的位置在被遍历到的childView区域中，childView是groupview的话其onInterceptTouchEvent将被调用，这个过程会一直进行下去
+
+    3,直到某个viewX的onInterceptTouchEvent返回了true，或者一直遍历到某个叶viewX，然后该viewX的onTouchEvent被调用
+
+    4,如果viewX的onTouchEvent返回false，则该viewX的父节点viewY的onTouchEvent被调用，这个过程会一直下去
+
+    5,如果直到根节点的onTouchEvent都返回false，那么后续的ACTION_MOVE和ACTION_UP将被这棵树里面的所有的view忽略
+
+    6,当某个viewX在onTouchEvent中返回true后，ACTION_MOVE和ACTION_UP会从根节点开始按照深度优先的算法依次调用onInterceptTouchEvent，但是和ACTION_DOWN不同，该过程只持续到viewX的父节点为止，然后viewX的onInterceptTouchEvent不被调用，而直接调用onTouchEvent（查看实验3的日志）
+
+    7,如果在ACTION_MOVE或者ACTION_UP在被viewX的onTouchEvent处理之前，某个viewZ的onInterceptTouchEvent返回true，表明viewZ要处理接下来的触摸事件，那么在viewZ的onTouchEvent被调用之前，onInterceptTouchEvent调用还会继续下去，只不过之后的view的onInterceptTouchEvent中的ACTION变成了ACTION_CANCEL,直到viewX中的onTouchEvent处理了这个ACTION_CANCEL后，viewZ的onTouchEvent才被调用，后续事件将只被viewZ的onTouchEvent处理。
+
+1,事件的流向
+在 Android 中，事件是沿着链条传递的，所以还需要关注事件的流向。
+
+首先，最先接收到触摸事件的是 Activity，然后再 RootView，然后再沿着 View 树从上到下传递，事件一直传递到树的最底部，之后事件会反过来由底向上传递。
+
+但是如果在事件的传递过程，某一个 View 或者 ViewGroup 对这个事件感兴趣，那么事件传递就在此终止，之后的其余事件就会也在这个 View 或者 ViewGroup 停止了，也就是我们常说的事件被消耗了。
+
+如果事件一直传递到底部，但是没有任何 View 对事件感兴趣，此事件就会在 View 树中一直向上传递，直到这个事件返回 Activity 为止。
+
+某一个 View 或者 ViewGroup 对这个事件感兴趣，只需要将它的 onTouchEvent() 方法的返回值设为 true。之后，系统就知道了某一个 View 或者 ViewGroup 对这个事件感兴趣，于是就中断原本的触摸事件的响应链。
+
+
+
+所以，一般情况下，当手指按下，也就是 ACTION_DOWN 事件传递时，各方法执行路线如下
+
+事件从上到下传递:Activity.dispatchEvent() --> ViewGroup.dispatchEvent() --> ViewGroup.onInterceptTouchEvent() -- > ViewGroup.dispatchEvent() --> ViewGroup.onInterceptTouchEvent()  --> ... --> View.dispatchEvent()
+事件从下到上返回:View.onTouchEvent() --> ViewGroup.onTouchEvent() --> ... --> ViewGroup.onTouchEvent() --> Activity.onTouchEvent()
+
+当事件被某一个 View 消耗时，各方法执行路线如下:
+事件从上到下传递:Activity.dispatchEvent() --> ViewGroup.dispatchEvent() --> ViewGroup.onInterceptTouchEvent() -- > ViewGroup.dispatchEvent() --> ViewGroup.onInterceptTouchEvent()  --> ... --> View.dispatchEvent()
+事件在这里终止，不继续向上返回:View.onTouchEvent()
+
+当事件被消耗了，这个时候 ACTION_MOVE 等其他事件也就会被这个 View 接收到了，switch-case 语句的 case MotionEvent.ACTION_MOVE 也就能执行到了。
+
+
+使用过的框架、平台：
+    1，EventBus（事件处理）；
+    2，Jpush（消息推送）；
+    3，友盟（统计平台）；
+    4，有米（优米）（广告平台）；
+    5，百度地图；
+    6，ShareSDK;
+    7，Vitamio（适配播放框架）；
+    8，爱加密（代码混淆平台）；
+    9,MPAndroidChart（图表框架）；
+    10，ZXing （二维码及条码扫描框架）
+    11，AsyncImageLoader（图片缓存框架）
+
+使用过的自定义控件：
+    1，XListView；
+    2，SlidingMenu;
+    3,HorizontalListview;
+    4,KenBurnsView;
+    5,PagerSlidingTabStrip;
+    6,CircleImageView;
+    7,SmoothCheckBox;
+    8,SquareProgressBar;
+    9,VerticalSeekBar;
+    10,WaveView;
+   

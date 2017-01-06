@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	android:id="@+id/widget32"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical"
+	android:padding="10dp"
+	android:gravity="center"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:android="http://schemas.android.com/apk/res/android">
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal"
+		android:gravity="center">
+		<view.victor.com.CircleImageView
+			android:id="@+id/iv_gif_frag_icon"
+			android:layout_width="50dp"
+			android:layout_height="50dp"
+			android:layout_centerInParent="true"
+			android:src="@mipmap/img_empty"
+			app:civ_border_width="2dp"
+			app:civ_border_color="@color/yellow"/>
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginLeft="10dp"
+			android:orientation="vertical"
+			android:gravity="center">
+			<TextView
+				android:id="@+id/tv_gif_frag_name"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:textSize="16sp"
+				android:textColor="@color/grey"
+				android:gravity="center_vertical"
+				android:text="快乐小姑凉" />
+			<TextView
+				android:id="@+id/tv_gif_frag_title"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:textSize="16sp"
+				android:textColor="@color/grey"
+				android:gravity="center_vertical"
+				android:text="2016-01-26 16:16:16" />
+		</LinearLayout>
+	</LinearLayout>
+<view.victor.com.ZdpImageView
+	android:id="@+id/ziv_gif_frag_gif"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:layout_centerInParent="true"
+	android:layout_centerVertical="true"
+	android:layout_margin="10dp"
+	android:src="@mipmap/img_empty"
+	android:scaleType="matrix" />
+<TextView
+	android:id="@+id/tv_gif_frag_text"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:layout_marginTop="5dp"
+	android:textSize="18sp"
+	android:textColor="@color/black"
+	android:gravity="center_vertical"
+	android:text="说得好有道理我竟无言以对" />
+</LinearLayout>

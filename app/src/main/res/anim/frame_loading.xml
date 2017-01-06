@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@mipmap/frame_load1" android:duration="80"></item>
+    <item android:drawable="@mipmap/frame_load2" android:duration="80"></item>
+    <item android:drawable="@mipmap/frame_load3" android:duration="80"></item>
+    <item android:drawable="@mipmap/frame_load4" android:duration="80"></item>
+    <item android:drawable="@mipmap/frame_load5" android:duration="80"></item>
+    <item android:drawable="@mipmap/frame_load6" android:duration="80"></item>
+    <item android:drawable="@mipmap/frame_load7" android:duration="80"></item>
+    <item android:drawable="@mipmap/frame_load8" android:duration="80"></item>
+    <item android:drawable="@mipmap/frame_load9" android:duration="80"></item>
+    <item android:drawable="@mipmap/frame_load10" android:duration="80"></item>
+    <item android:drawable="@mipmap/frame_load11" android:duration="80"></item>
+    <item android:drawable="@mipmap/frame_load12" android:duration="80"></item>
+    <item android:drawable="@mipmap/frame_load13" android:duration="80"></item>
+    <item android:drawable="@mipmap/frame_load14" android:duration="80"></item>
+    <item android:drawable="@mipmap/frame_load15" android:duration="80"></item>
+    <item android:drawable="@mipmap/frame_load16" android:duration="80"></item>
+    <item android:drawable="@mipmap/frame_load17" android:duration="80"></item>
+</animation-list>

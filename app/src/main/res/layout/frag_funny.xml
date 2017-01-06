@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+	android:id="@+id/widget32"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical"
+	android:gravity="center"
+	android:padding="10dp"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:android="http://schemas.android.com/apk/res/android">
+	<view.victor.com.XListView
+		android:id="@+id/lv_funny_frag"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:cacheColorHint="#00000000"/>
+
+	<view.victor.com.CircularProgress
+		android:id="@+id/cp_progress"
+		android:layout_width="70dp"
+		android:layout_height="70dp"
+		android:layout_gravity="center"
+		app:circularProgressBorderWidth="4dp"/>
+</FrameLayout>

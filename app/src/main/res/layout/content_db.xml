@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="flowfunny.victor.com.DbActivity"
+    tools:showIn="@layout/activity_db">
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/dl_menu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ListView
+            android:id="@+id/lv_channels"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@mipmap/rootblock_default_bg"/>
+
+        <LinearLayout
+            android:id="@+id/l_right"
+            android:layout_width="230dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_round"
+            android:orientation="vertical"
+            android:layout_gravity="right"
+            android:gravity="center">
+            <ListView
+                android:id="@+id/lv_menu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:listSelector="@drawable/lv_channel_selector"/>
+        </LinearLayout>
+    </android.support.v4.widget.DrawerLayout>
+
+</LinearLayout>

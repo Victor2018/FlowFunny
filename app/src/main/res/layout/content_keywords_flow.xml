@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="flowfunny.victor.com.KeywordsFlowActivity"
+    tools:showIn="@layout/activity_keywords_flow"
+    android:background="@mipmap/bg_search">
+
+    <LinearLayout
+        android:id="@+id/search_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <view.victor.com.ClearEditText
+            android:id="@+id/search_view"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/bg_edittext"
+            android:drawableLeft="@mipmap/ic_edittext_search"
+            android:drawablePadding="10dp"
+            android:drawableRight="@mipmap/ic_edittext_delete"
+            android:hint="请输入您要搜索的影片..."
+            android:padding="10dp"
+            android:singleLine="true"
+            android:textColor="@color/white"
+            android:textCursorDrawable="@null"
+            android:textSize="16dp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:padding="5dp"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/search_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_button_green"
+                android:drawableLeft="@mipmap/ic_button_search"
+                android:drawablePadding="5dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:text="云搜索"
+                android:textColor="@color/white"
+                android:textSize="16dp" />
+
+            <Button
+                android:id="@+id/app_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/bg_button_red"
+                android:drawableLeft="@mipmap/ic_button_star"
+                android:drawablePadding="5dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:text="精品应用"
+                android:textColor="@color/white"
+                android:textSize="16dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <view.victor.com.KeywordsFlow
+        android:id="@+id/keywordsflow"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/search_layout" />
+
+    <ImageView
+        android:id="@+id/back_arrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="14dp"
+        android:src="@mipmap/ic_back_arrow" />
+
+</RelativeLayout>

@@ -1,5 +1,19 @@
-1,NDK下载地址：http://developer.android.com/intl/zh-cn/ndk/downloads/index.html（需要翻墙，VPN:）
+﻿1,NDK下载地址：http://developer.android.com/intl/zh-cn/ndk/downloads/index.html（需要翻墙，VPN:）
+
 
 2，开源项目：
     2.1，https://github.com/Trinea/android-open-project
     2.2，https://github.com/wasabeef/awesome-android-ui/
+3,注解插件：http://jaeger.itscoder.com/android/2015/11/27/find-view-by-me.html
+4，adb命令：https://github.com/mzlogin/awesome-adb#%E7%B3%BB%E7%BB%9F%E5%BA%94%E7%94%A8
+5，json在线格式化，解析验证：
+http://www.kjson.com/
+http://json.cn/
+
+6，设计图欣赏：
+http://huaban.com/boards/4076703/
+http://www.zcool.com.cn/work/ZMTgyOTE1MDA=.html
+7，matrial design icon 制作：http://jaqen.me/mdpub/
+8，流程图在线绘制：http://www.processon.com/
+9，发布自己的lib到https://jitpack.io/：
+http://www.jianshu.com/p/e443456bb506

@@ -1,8 +1,8 @@
 1，Activity启动模式:
-（1），standard
-（2），singleTop
-（3），singleTask
-（4），singleInstance
+（1），standard:系统默认的模式，每次创建一个Activity时，都会在栈中创建一个实例。也就是说不管栈中这个实例是否存在都一定会创建一个新的实例。这个模式下，谁启动了Activity，那这个Activity就运行在启动它的那个Activity的任务栈中;
+（2），singleTop:栈顶复用模式。该模式下，如果新的Activity已经位于栈顶，那么则不会创建新的实例，同时会回调onNewIntent()方法，**需要注意，这时这个新的Activity的onCreate(),onStart()不会被调用，因为它并没有发生。但是若新的Activity没有位于栈顶，还是会创建一个新的实例;
+（3），singleTask:栈内复用模式。这是一种单例模式，如果任务栈中有新Activity的实例，则不会创建，同时回调onNewIntent()方法。具体来讲，若新的Activity所处的任务栈的不存在，则创建一个新的任务栈，并创建实例压入栈中。 若存在Activity所需要的任务栈，当前栈中若不存在该Activity的实例则创建，否则将存在的实例放在栈顶并调用onNewIntent();
+（4），singleInstance:单实例模式，这是一个加强的singleTask模式。Activity独占一个任务栈，就它一个，其他后续的请求均不会创建新的Activity，除非该任务栈被销毁。
 
 2，Java通过Executors提供四种线程池，分别为：
 （1），newCachedThreadPool创建一个可缓存线程池，如果线程池长度超过处理需要，可灵活回收空闲线程，若无可回收，则新建线程。

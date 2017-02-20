@@ -376,6 +376,11 @@ synchronized(同一个数据){} 同一个数据：就是N条线程同时访问�
 (2),同步方法：
 public synchronized 数据返回类型 方法名(){}
 
+53,如何让android的service一直在后台运行？
+(1),把service和activity分开，让service开机启动。设置一个broadcast receiver接受开机信号，使用RECEIVE_BOOT_COMPLETED的permission， 然后启动service。activity启动后绑定到service上，通过ipc机制通信，acitivity结束后松绑。注意安装后要手动启动service，不会自动启动，之后重启手机后才会随开机启动。
+(2),在内存低的时候系统会自动清理进程，这时候后台service可能会被杀掉。可以在onStartCommand中返回START_STICKY，这样系统有足够多资源的时候，就会重新开启service。
+
+
 使用过的框架、平台：
     1，EventBus（事件处理）；
     2，Jpush（消息推送）；

@@ -62,6 +62,18 @@
 - ÐÂÀËÎ¢²©
 - ![image](https://github.com/Victor2018/CantoneseMusic/raw/master/SrceenShot/sina_weibo.jpg)
 
-=======
-# FlowFunny
->>>>>>> 4cac29a2ccd07c7aea774e8b7996c023f4be48fd
+## License
+
+Copyright (c) 2017 Victor
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.

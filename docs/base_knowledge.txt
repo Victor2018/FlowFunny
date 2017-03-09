@@ -381,6 +381,50 @@ public synchronized 数据返回类型 方法名(){}
 (1),把service和activity分开，让service开机启动。设置一个broadcast receiver接受开机信号，使用RECEIVE_BOOT_COMPLETED的permission， 然后启动service。activity启动后绑定到service上，通过ipc机制通信，acitivity结束后松绑。注意安装后要手动启动service，不会自动启动，之后重启手机后才会随开机启动。
 (2),在内存低的时候系统会自动清理进程，这时候后台service可能会被杀掉。可以在onStartCommand中返回START_STICKY，这样系统有足够多资源的时候，就会重新开启service。
 
+54,Android中的几种动画
+
+曾被问到Android中有几种动画，这个问题也好难回答。Android3.0之前有2种，3.0后有3种。
+(1),FrameAnimation（逐帧动画）：将多张图片组合起来进行播放，类似于早期电影的工作原理，很多App的loading是采用这种方式。
+(2),TweenAnimation（补间动画）：是对某个View进行一系列的动画的操作，包括淡入淡出（Alpha），缩放（Scale），平移（Translate），旋转（Rotate）四种模式。
+(3),PropertyAnimation（属性动画）：属性动画不再仅仅是一种视觉效果了，而是一种不断地对值进行操作的机制，并将值赋到指定对象的指定属性上，可以是任意对象的任意属性。
+
+55,Android中跨进程通讯的几种方式
+
+(1),访问其他应用程序的Activity
+如调用系统通话应用
+Intent callIntent=new Intent(Intent.ACTION_CALL,Uri.parse("tel:12345678");
+startActivity(callIntent);
+(2),Content Provider
+如访问系统相册
+(3),广播（Broadcast）
+如显示系统时间
+(4),AIDL服务
+
+56,介绍不同场景下Activity生命周期的变化过程
+
+启动Activity： onCreate()—>onStart()—>onResume()，Activity进入运行状态。
+Activity退居后台： 当前Activity转到新的Activity界面或按Home键回到主屏： onPause()—>onStop()，进入停滞状态。
+Activity返回前台： onRestart()—>onStart()—>onResume()，再次回到运行状态。
+Activity退居后台，且系统内存不足， 系统会杀死这个后台状态的Activity，若再次回到这个Activity,则会走onCreate()–>onStart()—>onResume()
+锁定屏与解锁屏幕 只会调用onPause()，而不会调用onStop方法，开屏后则调用onResume()
+
+57,理解Activity，View,Window三者关系
+
+Activity像一个工匠（控制单元），Window像窗户（承载模型），View像窗花（显示视图）LayoutInflater像剪刀，Xml配置像窗花图纸。
+1：Activity构造的时候会初始化一个Window，准确的说是PhoneWindow。
+2：这个PhoneWindow有一个“ViewRoot”，这个“ViewRoot”是一个View或者说ViewGroup，是最初始的根视图。
+3：“ViewRoot”通过addView方法来一个个的添加View。比如TextView，Button等
+4：这些View的事件监听，是由WindowManagerService来接受消息，并且回调Activity函数。比如onClickListener，onKeyDown等。
+
+58,注册广播的几种方法?
+
+1.静态注册:在清单文件中注册， 常见的有监听设备启动，常驻注册不会随程序生命周期改变 
+2.动态注册:在代码中注册，随着程序的结束，也就停止接受广播了
+
+59,Service和Activity通信
+
+通过Binder
+通过broadcast
 
 使用过的框架、平台：
     1，EventBus（事件处理）；

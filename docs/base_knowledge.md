@@ -262,6 +262,8 @@ Java程序可以动态扩展是由运行期动态加载和动态链接实现的�
 
 （2），Context.bindService()方式启动。（生命周期与提供 context者一致）
 
+![image](https://github.com/Victor2018/FlowFunny/raw/master/SrceenShot/start_service.png)
+
 ## 3,Android中的几种动画
 
 Android3.0之前有2种，3.0后有3种。

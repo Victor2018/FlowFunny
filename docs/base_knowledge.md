@@ -242,7 +242,11 @@ Java 垃圾回收机制最基本的做法是分代回收。内存中的区域被
 ## 26,Java 类动态加载动态类加载：
 
 动态加载一个类十分简单。你要做的就是获取一个类加载器然后调用它的loadClass()方法；
-Java程序可以动态扩展是由运行期动态加载和动态链接实现的；比如：如果编写一个使用接口的应用程序，可以等到运行时再指定其实际的实现(多态)，解析过程有时候还可以在初始化之后执行；比如：动态绑定(多态)；
+Java程序可以动态扩展是由运行期动态加载和动态链接实现的；比如：如果编写一个使用接口的应用程序，可以等到运行时再指定其实际的实现(多态)，解析过程有时候还可以在初始化之后执行；比如：动态绑定(多态).
+
+## 27,Java中==与equals的区别
+
+==比较两个对象在内存里是不是同一个对象，就是说在内存里的存储位置一致。两个String对象存储的值一样的，但有可能在内存里存储在不同地方。
 
 # Android基础知识
 
@@ -276,18 +280,24 @@ Android3.0之前有2种，3.0后有3种。
 
 ## 4,Android中跨进程通讯的几种方式
 
-(1),访问其他应用程序的Activity
-如调用系统通话应用
-Intent callIntent=new Intent(Intent.ACTION_CALL,Uri.parse("tel:12345678");
-startActivity(callIntent);
+- (1),Intent传递数据
 
-(2),Content Provider
-如访问系统相册
+  访问其他应用程序的Activity 如调用系统通话应用
 
-(3),广播（Broadcast）
-如显示系统时间
+  Intent callIntent=new Intent(Intent.ACTION_CALL,Uri.parse("tel:12345678");
+  startActivity(callIntent);
 
-(4),AIDL服务
+- (2),Content Provider 如访问系统相册
+
+
+- (3),广播（Broadcast） 如显示系统时间
+
+
+- (4),AIDL服务
+
+
+- (5),Socket通信
+- (6),文件共享
 
 ## 5,如何让android的service一直在后台运行？
 

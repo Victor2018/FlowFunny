@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # 项目背景：
 	本项目是开发者在工作过程中的所用到的一些技术总结，和一些开源项目的使用，旨在提高开发效率走敏捷开发路线
 
@@ -60,7 +59,7 @@
 # 关注开发者：
 - 邮箱： victor423099@gmail.com
 - 新浪微博
-- ![image](https://github.com/Victor2018/CantoneseMusic/raw/master/SrceenShot/sina_weibo.jpg)
+- ![image](https://github.com/Victor2018/FlowFunny/raw/master/SrceenShot/sina_weibo.jpg)
 
 ## License
 

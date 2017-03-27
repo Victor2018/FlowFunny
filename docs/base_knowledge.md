@@ -788,7 +788,7 @@ static class MyAsyncTask extends AsyncTask<Void, Void, Void> {
 
 
 ##28,APP启动过程
-参考![image](http://www.jianshu.com/p/a72c5ccbd150)
+[参考](http://www.jianshu.com/p/a72c5ccbd150)
 ![image](https://github.com/Victor2018/FlowFunny/raw/master/SrceenShot/app_launch.png)
 
 - ①点击桌面App图标，Launcher进程采用Binder IPC向system_server进程发起startActivity请求；

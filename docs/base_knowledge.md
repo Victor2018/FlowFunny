@@ -800,6 +800,27 @@ static class MyAsyncTask extends AsyncTask<Void, Void, Void> {
 - ⑦主线程在收到Message后，通过发射机制创建目标Activity，并回调Activity.onCreate()等方法。
 - ⑧到此，App便正式启动，开始进入Activity生命周期，执行完onCreate/onStart/onResume方法，UI渲染结束后便可以看到App的主界面。
 
+##29,java中堆和栈的区别
+### 各司其职
+
+最主要的区别就是栈内存用来存储局部变量和方法调用。
+而堆内存用来存储Java中的对象。无论是成员变量，局部变量，还是类变量，它们指向的对象都存储在堆内存中。
+
+### 独有还是共享
+
+栈内存归属于单个线程，每个线程都会有一个栈内存，其存储的变量只能在其所属线程中可见，即栈内存可以理解成线程的私有内存。
+而堆内存中的对象对所有线程可见。堆内存中的对象可以被所有线程访问。
+
+### 异常错误
+
+如果栈内存没有可用的空间存储方法调用和局部变量，JVM会抛出java.lang.StackOverFlowError。
+而如果是堆内存没有可用的空间存储生成的对象，JVM会抛出java.lang.OutOfMemoryError。
+
+### 空间大小
+
+栈的内存要远远小于堆内存，如果你使用递归的话，那么你的栈很快就会充满。如果递归没有及时跳出，很可能发生StackOverFlowError问题。
+你可以通过-Xss选项设置栈内存的大小。-Xms选项可以设置堆的开始时的大小，-Xmx选项可以设置堆的最大值。
+
 ## 使用过的框架、平台：
 
 1，EventBus（事件处理）；

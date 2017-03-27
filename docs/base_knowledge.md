@@ -786,6 +786,20 @@ static class MyAsyncTask extends AsyncTask<Void, Void, Void> {
 
 对于使用了BraodcastReceiver，ContentObserver，File，Cursor，Stream，Bitmap等资源的使用，应该在Activity销毁时及时关闭或者注销，否则这些资源将不会被回收，造成内存泄漏。
 
+
+##28,APP启动过程
+参考![image](http://www.jianshu.com/p/a72c5ccbd150)
+![image](https://github.com/Victor2018/FlowFunny/raw/master/SrceenShot/app_launch.png)
+
+- ①点击桌面App图标，Launcher进程采用Binder IPC向system_server进程发起startActivity请求；
+- ②system_server进程接收到请求后，向zygote进程发送创建进程的请求；
+- ③Zygote进程fork出新的子进程，即App进程；
+- ④App进程，通过Binder IPC向sytem_server进程发起attachApplication请求；
+- ⑤system_server进程在收到请求后，进行一系列准备工作后，再通过binder IPC向App进程发送scheduleLaunchActivity请求；
+- ⑥App进程的binder线程（ApplicationThread）在收到请求后，通过handler向主线程发送LAUNCH_ACTIVITY消息；
+- ⑦主线程在收到Message后，通过发射机制创建目标Activity，并回调Activity.onCreate()等方法。
+- ⑧到此，App便正式启动，开始进入Activity生命周期，执行完onCreate/onStart/onResume方法，UI渲染结束后便可以看到App的主界面。
+
 ## 使用过的框架、平台：
 
 1，EventBus（事件处理）；

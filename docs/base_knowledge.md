@@ -800,7 +800,8 @@ static class MyAsyncTask extends AsyncTask<Void, Void, Void> {
 - ⑦主线程在收到Message后，通过发射机制创建目标Activity，并回调Activity.onCreate()等方法。
 - ⑧到此，App便正式启动，开始进入Activity生命周期，执行完onCreate/onStart/onResume方法，UI渲染结束后便可以看到App的主界面。
 
-##29,java中堆和栈的区别
+## 29,java中堆和栈的区别
+
 ### 各司其职
 
 最主要的区别就是栈内存用来存储局部变量和方法调用。

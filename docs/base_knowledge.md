@@ -322,20 +322,17 @@ Android3.0之前有2种，3.0后有3种。
 - (1),Intent传递数据
 
   访问其他应用程序的Activity 如调用系统通话应用
-
   Intent callIntent=new Intent(Intent.ACTION_CALL,Uri.parse("tel:12345678");
   startActivity(callIntent);
 
 - (2),Content Provider 如访问系统相册
 
-
 - (3),广播（Broadcast） 如显示系统时间
-
 
 - (4),AIDL服务
 
-
 - (5),Socket通信
+
 - (6),文件共享
 
 ## 5,如何让android的service一直在后台运行？
@@ -435,16 +432,12 @@ Activity像一个工匠（控制单元），Window像窗户（承载模型），
 
 (2),动态注册:在代码中注册，随着程序的结束，也就停止接受广播了
 
-## 16,Service和Activity通信
 
-- 通过Binder
-- 通过broadcast
-
-## 17,Fragment 和 Activity之间如何传值？
+## 16,Fragment 和 Activity之间如何传值？
 
 当Fragment 和 Activity绑定之后，在Fragment中可以通过getActivity()方法获取到其绑定的Ativity对象，这样就可以调用Activity的方法了，在Activity中可以通过FragmentManager fm = getFragmentManager();Fragment frag = fm.findFragmentByTag(tag),   Fragment frag = fm.findFragmentById(id)获取到Fragment之后就可以调用Fragment的方法，也就实现了通信功能。
 
-## 18,Android如何捕获未捕获的异常？
+## 17,Android如何捕获未捕获的异常？
 
 （1），自定义一个Application，比如叫MyApplicateion 继承Application 实现UncaughtExceptionHandler;
 
@@ -455,14 +448,14 @@ Activity像一个工匠（控制单元），Window像窗户（承载模型），
 
 （3），在AndroidMainiFest中配置该Application。
 
-## 19,如何修改activity进入和退出动画？
+## 18,如何修改activity进入和退出动画？
 
 （1），自定义activity主题；
 （2），覆写activity的overridePendingTransition方法
 
 overridePendingTransition（R.anim.fade,R.anim.hold）;
 
-## 20,数据类型
+## 19,数据类型
 
 | 基本类型 | byte | short |   int   | long | float | double | boolean |   char    |
 | :--: | :--: | :---: | :-----: | :--: | :---: | :----: | :-----: | :-------: |
@@ -472,7 +465,7 @@ overridePendingTransition（R.anim.fade,R.anim.hold）;
 除了八种基本类型，一切皆对象（隐用类型  默认值是null）
 Enum    枚举类型
 
-## 21，标识符定义
+## 20，标识符定义
 
 （1），由字母，数字，下划线（_），美元符（$）四种组成
 
@@ -482,7 +475,7 @@ Enum    枚举类型
 
 （4），不能和java中的关键字冲突
 
-## 22，static
+## 21，static
 
 static成员都是属于类管理，所有的对象共享
 
@@ -494,13 +487,13 @@ static属性或初始化 只执行一次
 
 static关键字只能用于类成员，不能修饰独立的类
 
-## 23，abstract  
+## 22，abstract  
 
 - 修饰类，也可以修饰类成员
 - 修饰类表示该类是抽象类,但是该类可以没有抽象方法，并且也不能实例化
 - 修饰方法，表示该方法是抽象的，那么如果一个类有一个抽象方法，那么该类必须声明成abstract类
 
-## 24，final
+## 23，final
 
 修饰类和类的成员
 
@@ -516,7 +509,7 @@ static 与 abstract 也不能混用
 
 当方法被private ,static ,final三个其中一个修饰的时候，该方法静态绑定
 
-## 25，xml 语法
+## 24，xml 语法
 
 节点由元素节点、文本节点、属性节点组成
 
@@ -526,7 +519,7 @@ static 与 abstract 也不能混用
 
 3，大小写区分
 
-## 26，Touch事件的处理流程：
+## 25，Touch事件的处理流程：
 
 - 1,一旦某个ViewGroup获得了ACTION_DOWN的事件，会根据深度优先的算法遍历以该ViewGroup为根节点的view树
 - 2,如果点击的位置在被遍历到的childView区域中，childView是groupview的话其onInterceptTouchEvent将被调用，这个过程会一直进行下去
@@ -536,7 +529,7 @@ static 与 abstract 也不能混用
 - 6,当某个viewX在onTouchEvent中返回true后，ACTION_MOVE和ACTION_UP会从根节点开始按照深度优先的算法依次调用onInterceptTouchEvent，但是和ACTION_DOWN不同，该过程只持续到viewX的父节点为止，然后viewX的onInterceptTouchEvent不被调用，而直接调用onTouchEvent（查看实验3的日志）
 - 7,如果在ACTION_MOVE或者ACTION_UP在被viewX的onTouchEvent处理之前，某个viewZ的onInterceptTouchEvent返回true，表明viewZ要处理接下来的触摸事件，那么在viewZ的onTouchEvent被调用之前，onInterceptTouchEvent调用还会继续下去，只不过之后的view的onInterceptTouchEvent中的ACTION变成了ACTION_CANCEL,直到viewX中的onTouchEvent处理了这个ACTION_CANCEL后，viewZ的onTouchEvent才被调用，后续事件将只被viewZ的onTouchEvent处理。
 
-## 27,5个Android开发中比较常见的内存泄漏问题及解决办法
+## 26,5个Android开发中比较常见的内存泄漏问题及解决办法
 ### 一、单例造成的内存泄漏
 
 Android的单例模式非常受开发者的喜爱，不过使用的不恰当的话也会造成内存泄漏。因为单例的静态特性使得单例的生命周期和应用的生命周期一样长，这就说明了如果一个对象已经不需要使用了，而单例对象还持有该对象的引用，那么这个对象将不能被正常回收，这就导致了内存泄漏。
@@ -787,7 +780,7 @@ static class MyAsyncTask extends AsyncTask<Void, Void, Void> {
 对于使用了BraodcastReceiver，ContentObserver，File，Cursor，Stream，Bitmap等资源的使用，应该在Activity销毁时及时关闭或者注销，否则这些资源将不会被回收，造成内存泄漏。
 
 
-##28,APP启动过程
+##27,APP启动过程
 [参考](http://www.jianshu.com/p/a72c5ccbd150)
 ![image](https://github.com/Victor2018/FlowFunny/raw/master/SrceenShot/app_launch.png)
 
@@ -800,7 +793,7 @@ static class MyAsyncTask extends AsyncTask<Void, Void, Void> {
 - ⑦主线程在收到Message后，通过发射机制创建目标Activity，并回调Activity.onCreate()等方法。
 - ⑧到此，App便正式启动，开始进入Activity生命周期，执行完onCreate/onStart/onResume方法，UI渲染结束后便可以看到App的主界面。
 
-## 29,java中堆和栈的区别
+## 28,java中堆和栈的区别
 
 ### 各司其职
 

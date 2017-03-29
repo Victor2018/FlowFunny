@@ -327,13 +327,15 @@ Android3.0之前有2种，3.0后有3种。
 
 - (2),Content Provider 如访问系统相册
 
-- (3),广播（Broadcast） 如显示系统时间
+- (3),Messenger方式
 
 - (4),AIDL服务
 
 - (5),Socket通信
 
 - (6),文件共享
+
+- (7),广播（Broadcast） 如显示系统时间
 
 ## 5,如何让android的service一直在后台运行？
 
@@ -814,6 +816,22 @@ static class MyAsyncTask extends AsyncTask<Void, Void, Void> {
 
 栈的内存要远远小于堆内存，如果你使用递归的话，那么你的栈很快就会充满。如果递归没有及时跳出，很可能发生StackOverFlowError问题。
 你可以通过-Xss选项设置栈内存的大小。-Xms选项可以设置堆的开始时的大小，-Xmx选项可以设置堆的最大值。
+
+
+
+## 29,LinearLayout和RelativeLayout性能对比-百度
+
+- RelativeLayout会让子View调用2次onMeasure，LinearLayout 在有weight时，也会调用子View2次onMeasure
+- RelativeLayout的子View如果高度和RelativeLayout不同，则会引发效率问题，当子View很复杂时，这个问题会更加严重。如果可以，尽量使用padding代替margin。
+- 在不影响层级深度的情况下,使用LinearLayout和FrameLayout而不是RelativeLayout。
+
+最后再思考一下文章开头那个矛盾的问题，为什么Google给开发者默认新建了个RelativeLayout，而自己却在DecorView中用了个LinearLayout。因为DecorView的层级深度是已知而且固定的，上面一个标题栏，下面一个内容栏。采用RelativeLayout并不会降低层级深度，所以此时在根节点上用LinearLayout是效率最高的。而之所以给开发者默认新建了个RelativeLayout是希望开发者能采用尽量少的View层级来表达布局以实现性能最优，因为复杂的View嵌套对性能的影响会更大一些。
+
+
+
+## 30,什么是深拷贝和浅拷
+
+浅拷贝：使用一个已知实例对新创建实例的成员变量逐个赋值，这个方式被称为浅拷贝。 深拷贝：当一个类的拷贝构造方法，不仅要复制对象的所有非引用成员变量值，还要为引用类型的成员变量创建新的实例，并且初始化为形式参数实例值。这个方式称为深拷贝
 
 ## 使用过的框架、平台：
 

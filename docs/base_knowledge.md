@@ -286,6 +286,27 @@ Java程序可以动态扩展是由运行期动态加载和动态链接实现的�
 | :-------: | :---: | :----------: | :---: | :--------------------: | :--------------------------: | :----------------------------------: | :---------------------: |
 | Hashtable | 线程安全  | 不允许有null的键和值 | 效率稍低  |    方法是Synchronize的     |        有contains方法方法         |       Hashtable 继承于Dictionary类       |  Hashtable比HashMap 要旧   |
 
+## 31,java中堆和栈的区别
+
+### 各司其职
+
+最主要的区别就是栈内存用来存储局部变量和方法调用。
+而堆内存用来存储Java中的对象。无论是成员变量，局部变量，还是类变量，它们指向的对象都存储在堆内存中。
+
+### 独有还是共享
+
+栈内存归属于单个线程，每个线程都会有一个栈内存，其存储的变量只能在其所属线程中可见，即栈内存可以理解成线程的私有内存。
+而堆内存中的对象对所有线程可见。堆内存中的对象可以被所有线程访问。
+
+### 异常错误
+
+如果栈内存没有可用的空间存储方法调用和局部变量，JVM会抛出java.lang.StackOverFlowError。
+而如果是堆内存没有可用的空间存储生成的对象，JVM会抛出java.lang.OutOfMemoryError。
+
+### 空间大小
+
+栈的内存要远远小于堆内存，如果你使用递归的话，那么你的栈很快就会充满。如果递归没有及时跳出，很可能发生StackOverFlowError问题。
+你可以通过-Xss选项设置栈内存的大小。-Xms选项可以设置堆的开始时的大小，-Xmx选项可以设置堆的最大值。
 
 # Android基础知识
 
@@ -782,7 +803,7 @@ static class MyAsyncTask extends AsyncTask<Void, Void, Void> {
 对于使用了BraodcastReceiver，ContentObserver，File，Cursor，Stream，Bitmap等资源的使用，应该在Activity销毁时及时关闭或者注销，否则这些资源将不会被回收，造成内存泄漏。
 
 
-##27,APP启动过程
+##27,APP启动过程-习习网络
 [参考](http://www.jianshu.com/p/a72c5ccbd150)
 ![image](https://github.com/Victor2018/FlowFunny/raw/master/SrceenShot/app_launch.png)
 
@@ -795,28 +816,9 @@ static class MyAsyncTask extends AsyncTask<Void, Void, Void> {
 - ⑦主线程在收到Message后，通过发射机制创建目标Activity，并回调Activity.onCreate()等方法。
 - ⑧到此，App便正式启动，开始进入Activity生命周期，执行完onCreate/onStart/onResume方法，UI渲染结束后便可以看到App的主界面。
 
-## 28,java中堆和栈的区别
 
-### 各司其职
-
-最主要的区别就是栈内存用来存储局部变量和方法调用。
-而堆内存用来存储Java中的对象。无论是成员变量，局部变量，还是类变量，它们指向的对象都存储在堆内存中。
-
-### 独有还是共享
-
-栈内存归属于单个线程，每个线程都会有一个栈内存，其存储的变量只能在其所属线程中可见，即栈内存可以理解成线程的私有内存。
-而堆内存中的对象对所有线程可见。堆内存中的对象可以被所有线程访问。
-
-### 异常错误
-
-如果栈内存没有可用的空间存储方法调用和局部变量，JVM会抛出java.lang.StackOverFlowError。
-而如果是堆内存没有可用的空间存储生成的对象，JVM会抛出java.lang.OutOfMemoryError。
-
-### 空间大小
-
-栈的内存要远远小于堆内存，如果你使用递归的话，那么你的栈很快就会充满。如果递归没有及时跳出，很可能发生StackOverFlowError问题。
-你可以通过-Xss选项设置栈内存的大小。-Xms选项可以设置堆的开始时的大小，-Xmx选项可以设置堆的最大值。
-
+## 28,描述一次网络请求的流程-新浪
+![image](https://github.com/Victor2018/FlowFunny/raw/master/SrceenShot/http.png)
 
 
 ## 29,LinearLayout和RelativeLayout性能对比-百度
@@ -829,9 +831,32 @@ static class MyAsyncTask extends AsyncTask<Void, Void, Void> {
 
 
 
-## 30,什么是深拷贝和浅拷
+## 30,什么是深拷贝和浅拷贝
 
 浅拷贝：使用一个已知实例对新创建实例的成员变量逐个赋值，这个方式被称为浅拷贝。 深拷贝：当一个类的拷贝构造方法，不仅要复制对象的所有非引用成员变量值，还要为引用类型的成员变量创建新的实例，并且初始化为形式参数实例值。这个方式称为深拷贝
+
+## 31，Handler,Thread和HandlerThread的差别-小米
+从Android中Thread（java.lang.Thread -> java.lang.Object）描述可以看出，Android的Thread没有对Java的Thread做任何封装，但是Android提供了一个继承自Thread的类HandlerThread（android.os.HandlerThread -> java.lang.Thread），这个类对Java的Thread做了很多便利Android系统的封装。
+
+android.os.Handler可以通过Looper对象实例化，并运行于另外的线程中，Android提供了让Handler运行于其它线程的线程实现，也是就HandlerThread。HandlerThread对象start后可以获得其Looper对象，并且使用这个Looper对象实例Handler。
+
+## 32，本地广播和全局广播有什么差别
+
+因广播数据在本应用范围内传播，不用担心隐私数据泄露的问题。 不用担心别的应用伪造广播，造成安全隐患。 相比在系统内发送全局广播，它更高效。
+
+## 33,View刷新机制-百度-美团
+
+由ViewRoot对象的performTraversals()方法调用draw()方法发起绘制该View树，值得注意的是每次发起绘图时，并不会重新绘制每个View树的视图，而只会重新绘制那些“需要重绘”的视图，View类内部变量包含了一个标志位DRAWN，当该视图需要重绘时，就会为该View添加该标志位。
+
+调用流程 ：
+
+mView.draw()开始绘制，draw()方法实现的功能如下：
+
+绘制该View的背景
+为显示渐变框做一些准备操作(见5，大多数情况下，不需要改渐变框)          
+调用onDraw()方法绘制视图本身   (每个View都需要重载该方法，ViewGroup不需要实现该方法)
+调用dispatchDraw ()方法绘制子视图(如果该View类型不为ViewGroup，即不包含子视图，不需要重载该方法)值得说明的是，ViewGroup类已经为我们重写了dispatchDraw ()的功能实现，应用程序一般不需要重写该方法，但可以重载父类函数实现具体的功能。
+
 
 ## 使用过的框架、平台：
 

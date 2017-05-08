@@ -58,6 +58,14 @@ public synchronized 数据返回类型 方法名(){}
    List :  (1)有序的数据，取数据的时候是按放数据的顺序取的；（2）可重复的数据。
    Set:    (1)无序的数据，取数据的顺序和放数据的顺序不一致； (2)不可重复的数据(通过equals和hashcode共同决定的)。
 
+- equals() 和 hashcode() 区别：
+   equals()是指二者逻辑意义上相等即可,而 hashcode() 则是对一个对象进行hash计算得到的一个散列值;
+   - hashcode() 特点：
+     (1),对象x和y的hashcode相同，不代表两个对象就相同(x.equals(y)=true)，可能存在hash碰撞；不过hashcode如果不相同，那么一定是两个不同的对象;(2),如果两个对象的equals()相等，那么hashcode一定相等。
+     所以我们一般可以用hashcode来快速比较两个对象互异，因为如果x.hashcode() != y.hashcode()，那么x.equals(y)=false。
+   - equals() 的特性
+     (1),自反性：对于非null的对象x，必须有 x.equals(x)=true;(2),对称性：如果 x.equals(y)=true，那么y.equals(x)必须也为true;(3),传递性：如果x.equals(y)=true而且y.equals(z)=true，那么x.equals(z)必须为true;(4),对于非null的对象x，一定有x.equals(null)=false
+
 ## 10,Iterable （独立接口没有父接口）
 
 java中增强for循环用于那些类型的对象
@@ -856,6 +864,18 @@ mView.draw()开始绘制，draw()方法实现的功能如下：
 为显示渐变框做一些准备操作(见5，大多数情况下，不需要改渐变框)          
 调用onDraw()方法绘制视图本身   (每个View都需要重载该方法，ViewGroup不需要实现该方法)
 调用dispatchDraw ()方法绘制子视图(如果该View类型不为ViewGroup，即不包含子视图，不需要重载该方法)值得说明的是，ViewGroup类已经为我们重写了dispatchDraw ()的功能实现，应用程序一般不需要重写该方法，但可以重载父类函数实现具体的功能。
+
+## 34,Android中的ANR异常如何分析又该怎么去避免ANR
+在Android中，应用程序的响应是由Activity Manager和WindowManager系统服务监视的 。当它监测到A、B、C情况中的一个时，Android就会针对特定的应用程序显示ANR：
+- A.在5秒内没有响应输入的事件（例如，按键按下，屏幕触摸）--主要类型
+- B.BroadcastReceiver在10秒内没有执行完毕
+- C.Service在特定时间内（20秒内）无法处理完成--小概率类型
+
+怎么避免ANR:
+
+- (1)避免在主线程上进行复杂耗时的操作，比如说发送接收网络数据/进行大量计算/操作数据库/读写文件等。这个可以通过使用AsyncTask或者使用多线程来实现。
+- (2)broadCastReceiver 要进行复杂操作的的时候，可以在onReceive()方法中启动一个Service来处理
+- (3)在设计及代码编写阶段避免出现出现同步/死锁或者错误处理不恰当等情况。
 
 
 ## 使用过的框架、平台：
